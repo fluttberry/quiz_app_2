@@ -15,13 +15,18 @@ class _QuizHomePageState extends State<QuizHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: Text(
-          'Quiz',
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: 'SFProText',
-            fontWeight: FontWeight.bold,
+        backgroundColor: Colors.grey.shade50,
+        title: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Text(
+            'Quiz',
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'SFProText',
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -31,7 +36,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(40),
               child: Container(
                 alignment: Alignment.center,
                 height: 75,
@@ -45,7 +50,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 65, bottom: 15),
+                padding: const EdgeInsets.only(left: 70, bottom: 15),
                 child: Text(
                   'Questions amount:',
                   style: TextStyle(
@@ -66,7 +71,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
           ),
           Slider(
             activeColor: Color(0xffBE52F2),
-            padding: EdgeInsets.symmetric(horizontal: 65),
+            padding: EdgeInsets.symmetric(horizontal: 70),
             min: 1,
             max: 50,
             label: count.toString(),
@@ -78,7 +83,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 220, top: 25),
+            padding: const EdgeInsets.only(right: 210, top: 25),
             child: Text(
               'Category',
               style: TextStyle(
@@ -89,24 +94,29 @@ class _QuizHomePageState extends State<QuizHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 65),
-            child: DropdownButton(
-              dropdownColor: Colors.amber,
-              isExpanded: true,
-              menuMaxHeight: 30,
-              items: [
-                DropdownMenuItem(child: Text('All')),
-                // DropdownMenuItem(child: Text('data2')),
-                // DropdownMenuItem(child: Text('data3')),
-                // DropdownMenuItem(child: Text('data4')),
-                // DropdownMenuItem(child: Text('data5')),
-              ],
+            padding: const EdgeInsets.symmetric(horizontal: 70),
+            child: Container(
+              height: 60,
+              decoration: BoxDecoration(color: Colors.white),
+              child: DropdownButton(
+                elevation: 0,
+                isExpanded: true,
+                menuMaxHeight: 30,
+                iconSize: 35,
+                items: [
+                  DropdownMenuItem(child: Text('  All')),
+                  // DropdownMenuItem(child: Text('data2')),
+                  // DropdownMenuItem(child: Text('data3')),
+                  // DropdownMenuItem(child: Text('data4')),
+                  // DropdownMenuItem(child: Text('data5')),
+                ],
 
-              onChanged: (v) {},
+                onChanged: (v) {},
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 220, top: 25),
+            padding: const EdgeInsets.only(right: 210, top: 25),
             child: Text(
               'Difficulty',
               style: TextStyle(
@@ -117,20 +127,25 @@ class _QuizHomePageState extends State<QuizHomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 65),
-            child: DropdownButton(
-              dropdownColor: Colors.amber,
-              isExpanded: true,
-              menuMaxHeight: 30,
-              items: [
-                DropdownMenuItem(child: Text('All')),
-                // DropdownMenuItem(child: Text('data2')),
-                // DropdownMenuItem(child: Text('data3')),
-                // DropdownMenuItem(child: Text('data4')),
-                // DropdownMenuItem(child: Text('data5')),
-              ],
+            padding: const EdgeInsets.symmetric(horizontal: 70),
+            child: Container(
+              height: 60,
+              decoration: BoxDecoration(color: Colors.white),
+              child: DropdownButton(
+                elevation: 0,
+                isExpanded: true,
+                menuMaxHeight: 30,
+                iconSize: 35,
+                items: [
+                  DropdownMenuItem(child: Text('  All')),
+                  // DropdownMenuItem(child: Text('data2')),
+                  // DropdownMenuItem(child: Text('data3')),
+                  // DropdownMenuItem(child: Text('data4')),
+                  // DropdownMenuItem(child: Text('data5')),
+                ],
 
-              onChanged: (v) {},
+                onChanged: (v) {},
+              ),
             ),
           ),
           SizedBox(height: 50),
@@ -143,18 +158,22 @@ class _QuizHomePageState extends State<QuizHomePage> {
             ),
             child: InkWell(
               onTap: () {},
-              child: Text(
-                'START',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'SFProText',
-                  color: Colors.white,
+              child: Center(
+                child: Text(
+                  'START',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'SFProText',
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [BottomNavigationBarItem(icon: icon)],),
     );
   }
 }
