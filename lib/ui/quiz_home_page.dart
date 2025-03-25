@@ -90,7 +90,10 @@ class _QuizHomePageState extends State<QuizHomePage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 65),
-            child: DropdownButton(dropdownColor: Colors.amber, isExpanded: true, menuMaxHeight: 30,
+            child: DropdownButton(
+              dropdownColor: Colors.amber,
+              isExpanded: true,
+              menuMaxHeight: 30,
               items: [
                 DropdownMenuItem(child: Text('All')),
                 // DropdownMenuItem(child: Text('data2')),
@@ -98,7 +101,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
                 // DropdownMenuItem(child: Text('data4')),
                 // DropdownMenuItem(child: Text('data5')),
               ],
-                  
+
               onChanged: (v) {},
             ),
           ),
@@ -115,7 +118,10 @@ class _QuizHomePageState extends State<QuizHomePage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 65),
-            child: DropdownButton(dropdownColor: Colors.amber, isExpanded: true, menuMaxHeight: 30,
+            child: DropdownButton(
+              dropdownColor: Colors.amber,
+              isExpanded: true,
+              menuMaxHeight: 30,
               items: [
                 DropdownMenuItem(child: Text('All')),
                 // DropdownMenuItem(child: Text('data2')),
@@ -123,23 +129,30 @@ class _QuizHomePageState extends State<QuizHomePage> {
                 // DropdownMenuItem(child: Text('data4')),
                 // DropdownMenuItem(child: Text('data5')),
               ],
-                  
+
               onChanged: (v) {},
             ),
           ),
           SizedBox(height: 50),
           Container(
-            
-            height: 48, width: 200,
+            height: 48,
+            width: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: Color(0xff6979f8),),
-            child: InkWell(
-              
-              onTap: () {},
-            child: Text('START', style: TextStyle(fontSize: 16, fontFamily: 'SFProText'),),
+              color: Color(0xff6979f8),
             ),
-          )
+            child: InkWell(
+              onTap: () {},
+              child: Text(
+                'START',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'SFProText',
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
