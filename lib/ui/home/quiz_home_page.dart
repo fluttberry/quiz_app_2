@@ -32,7 +32,7 @@ class _QuizHomePageState extends State<QuizHomePage> {
       ),
 
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: Padding(
@@ -136,12 +136,13 @@ class _QuizHomePageState extends State<QuizHomePage> {
                 isExpanded: true,
                 menuMaxHeight: 30,
                 iconSize: 35,
+                value: null,
                 items: [
                   DropdownMenuItem(child: Text('  All')),
-                  // DropdownMenuItem(child: Text('data2')),
-                  // DropdownMenuItem(child: Text('data3')),
-                  // DropdownMenuItem(child: Text('data4')),
-                  // DropdownMenuItem(child: Text('data5')),
+                  DropdownMenuItem(value: 1, child: Text('data2')),
+                  DropdownMenuItem(value: 2, child: Text('data3')),
+                  DropdownMenuItem(value: 3, child: Text('data4')),
+                  DropdownMenuItem(value: 4, child: Text('data5')),
                 ],
 
                 onChanged: (v) {},
@@ -178,14 +179,15 @@ class _QuizHomePageState extends State<QuizHomePage> {
         backgroundColor: Colors.grey.shade50,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined), 
-            label: ''),
+            icon: Image.asset('assets/icons/Explore_Active.png', color: Color(0xffBE52F2),), 
+            label: ''
+          ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.maps_ugc_outlined),
+            icon: Image.asset('assets/icons/Map_Inactive.png'),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_off_outlined),
+            icon: Image.asset('assets/icons/Profile_Inactive.png'),
             label: '',
           ),
         ],
