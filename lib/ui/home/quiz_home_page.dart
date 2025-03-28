@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_2/ui/home/history_screen.dart';
+import 'package:quiz_app_2/ui/home/quiz_screen.dart';
+import 'package:quiz_app_2/ui/home/settings_screen.dart';
 
 class QuizHomePage extends StatefulWidget {
   const QuizHomePage({super.key});
@@ -8,179 +11,32 @@ class QuizHomePage extends StatefulWidget {
 }
 
 class _QuizHomePageState extends State<QuizHomePage> {
-  int count = 50;
-  String v = 'Question amount';
-  // String selectedCategory = 'data1';
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        backgroundColor: Colors.grey.shade50,
-        title: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            'Quiz',
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: 'SFProText',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(30),
-              child: Container(
-                alignment: Alignment.center,
-                height: 75,
-                width: 50,
-                child: Image.asset('assets/images/AR_Tut.png'),
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 70, bottom: 15),
-                child: Text(
-                  'Questions amount:',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontFamily: 'SFProText',
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15),
-                child: Text(
-                  '10',
-                  style: TextStyle(fontSize: 16, fontFamily: 'SFProText'),
-                ),
-              ),
-            ],
-          ),
-          Slider(
-            activeColor: Color(0xffBE52F2),
-            padding: EdgeInsets.symmetric(horizontal: 70),
-            min: 1,
-            max: 50,
-            label: count.toString(),
-            value: count.toDouble(),
-            onChanged: (v) {
-              setState(() {
-                count = v.toInt();
-              });
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 210, top: 25, bottom: 20),
-            child: Text(
-              'Category',
-              style: TextStyle(
-                fontSize: 14,
-                fontFamily: 'SFProText',
-                color: Colors.grey,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 70),
-            child: Container(
-              height: 60,
-              decoration: BoxDecoration(color: Colors.white),
-              child: DropdownButton(
-                elevation: 0,
-                isExpanded: true,
-                menuMaxHeight: 30,
-                iconSize: 35,
-                items: [
-                  DropdownMenuItem(child: Text('  All')),
-                  // DropdownMenuItem(child: Text('data2')),
-                  // DropdownMenuItem(child: Text('data3')),
-                  // DropdownMenuItem(child: Text('data4')),
-                  // DropdownMenuItem(child: Text('data5')),
-                ],
-
-                onChanged: (v) {},
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 210, top: 25, bottom: 20),
-            child: Text(
-              'Difficulty',
-              style: TextStyle(
-                fontSize: 14,
-                fontFamily: 'SFProText',
-                color: Colors.grey,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 70),
-            child: Container(
-              height: 60,
-              decoration: BoxDecoration(color: Colors.white),
-              child: DropdownButton(
-                elevation: 0,
-                isExpanded: true,
-                menuMaxHeight: 30,
-                iconSize: 35,
-                value: null,
-                items: [
-                  DropdownMenuItem(child: Text('  All')),
-                  DropdownMenuItem(value: 1, child: Text('data2')),
-                  DropdownMenuItem(value: 2, child: Text('data3')),
-                  DropdownMenuItem(value: 3, child: Text('data4')),
-                  DropdownMenuItem(value: 4, child: Text('data5')),
-                ],
-
-                onChanged: (v) {},
-              ),
-            ),
-          ),
-          SizedBox(height: 50),
-          Container(
-            height: 48,
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: Color(0xff6979f8),
-            ),
-            child: InkWell(
-              onTap: () {},
-              child: Center(
-                child: Text(
-                  'START',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'SFProText',
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+      body: IndexedStack(
+        index: index,
+        children: [QuizScreen(), HistoryScreen(), SettingsScreen()],
       ),
 
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         backgroundColor: Colors.grey.shade50,
+        onTap: (i) {
+          setState(() {
+            index = i;
+          });
+        },
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/Explore_Active.png', color: Color(0xffBE52F2),), 
-            label: ''
+            icon: Image.asset(
+              'assets/icons/Explore_Active.png',
+              color: Color(0xffBE52F2),
+            ),
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: Image.asset('assets/icons/Map_Inactive.png'),
