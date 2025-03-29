@@ -8,6 +8,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  String? dif;
   int count = 50;
   String v = 'Question amount';
 
@@ -93,12 +94,13 @@ class _QuizScreenState extends State<QuizScreen> {
             decoration: BoxDecoration(color: Colors.white),
             child: DropdownButtonHideUnderline(
               child: DropdownButton(
-                elevation: 0,
+                value: null,
+
                 isExpanded: true,
-                menuMaxHeight: 30,
+
                 iconSize: 35,
                 items: [
-                  DropdownMenuItem(child: Text('  All')),
+                  DropdownMenuItem(value: null, child: Text('  All')),
                   DropdownMenuItem(value: 'easy', child: Text('Easy')),
                   DropdownMenuItem(value: 'normal', child: Text('Normal')),
                   DropdownMenuItem(value: 'hard', child: Text('Hard')),
@@ -127,11 +129,9 @@ class _QuizScreenState extends State<QuizScreen> {
             decoration: BoxDecoration(color: Colors.white),
             child: DropdownButtonHideUnderline(
               child: DropdownButton(
-                elevation: 0,
                 isExpanded: true,
-                menuMaxHeight: 30,
                 iconSize: 35,
-                value: null,
+                value: dif,
                 items: [
                   DropdownMenuItem(child: Text('  All')),
                   DropdownMenuItem(value: 'easy', child: Text('Easy')),
@@ -139,7 +139,11 @@ class _QuizScreenState extends State<QuizScreen> {
                   DropdownMenuItem(value: 'hard', child: Text('Hard')),
                 ],
 
-                onChanged: (v) {},
+                onChanged: (v) {
+                  setState(() {
+                    dif = v;
+                  });
+                },
               ),
             ),
           ),
