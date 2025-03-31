@@ -12,10 +12,11 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   int? category;
+  String? difficulty;
   CategoryModel? categoryModel;
   CategoryRepository repository = CategoryRepository();
   int count = 50;
-  String v = 'Question amount';
+  // String v = 'Question amount';
 
   @override
   void initState() {
@@ -118,12 +119,17 @@ class _QuizScreenState extends State<QuizScreen> {
                 value: null,
                 items: [
                   DropdownMenuItem(value: null, child: Text('All')),
-                  DropdownMenuItem(value: 'easy', child: Text('Easy')),
-                  DropdownMenuItem(value: 'normal', child: Text('Normal')),
-                  DropdownMenuItem(value: 'hard', child: Text('Hard')),
+                  for (CategoryItemModel cat
+                      in categoryModel?.triviaCategories ?? [])
+                    DropdownMenuItem(value: cat.id, child: Text(cat.name)),
                 ],
 
-                onChanged: (v) {},
+                onChanged: (v) {
+                  setState(() {
+                    category = v;
+                  });
+                }
+                ,
               ),
             ),
           ),
@@ -151,14 +157,15 @@ class _QuizScreenState extends State<QuizScreen> {
                 value: category,
                 items: [
                   DropdownMenuItem(value: null, child: Text('All')),
-                  for (CategoryItemModel cat
-                      in categoryModel?.triviaCategories ?? [])
-                    DropdownMenuItem(value: cat.id, child: Text(cat.name)),
+                  DropdownMenuItem(value: 'easy', child: Text('Easy')),
+                  DropdownMenuItem(value: 'normal', child: Text('Normal')),
+                  DropdownMenuItem(value: 'hard', child: Text('Hard')),
+                  
                 ],
 
-                onChanged: (value) {
+                onChanged: (v) {
                   setState(() {
-                    category = value;
+                    difficulty = v as String?;
                   });
                 },
               ),
