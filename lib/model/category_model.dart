@@ -7,14 +7,14 @@ class CategoryModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'triviaCategories': triviaCategories.map((x) => x.toMap()).toList(),
+      'trivia_categories': triviaCategories.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
       triviaCategories: List<CategoryItemModel>.from(
-        (map['trivia_categories']).map<CategoryModel>(
+        (map['trivia_categories']).map<CategoryItemModel>(
           (x) => CategoryItemModel.fromMap(x as Map<String,dynamic>),
         ),
       ),

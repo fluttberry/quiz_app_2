@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:quiz_app_2/model/category_model.dart';
 import 'package:quiz_app_2/repository/category.dart';
@@ -16,11 +16,11 @@ class _QuizScreenState extends State<QuizScreen> {
   CategoryModel? categoryModel;
   CategoryRepository repository = CategoryRepository();
   int count = 50;
-  // String v = 'Question amount';
+ 
 
   @override
   void initState() {
-    // TODO: implement initState
+  
     super.initState();
     getData();
   }
@@ -66,7 +66,7 @@ class _QuizScreenState extends State<QuizScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 70, bottom: 15),
               child: Text(
-                'Questions amount:',
+                'Questions amount: $count',
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'SFProText',
@@ -74,13 +74,13 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Text(
-                '10',
-                style: TextStyle(fontSize: 16, fontFamily: 'SFProText'),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 15),
+            //   child: Text(
+            //     '${count.}',
+            //     style: TextStyle(fontSize: 16, fontFamily: 'SFProText'),
+            //   ),
+            // ),
           ],
         ),
         Slider(
@@ -116,7 +116,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: DropdownButton(
                 isExpanded: true,
                 iconSize: 35,
-                value: null,
+                value: category,
                 items: [
                   DropdownMenuItem(value: null, child: Text('All')),
                   for (CategoryItemModel cat
@@ -154,7 +154,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: DropdownButton(
                 isExpanded: true,
                 iconSize: 35,
-                value: category,
+                value: difficulty,
                 items: [
                   DropdownMenuItem(value: null, child: Text('All')),
                   DropdownMenuItem(value: 'easy', child: Text('Easy')),
@@ -165,7 +165,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
                 onChanged: (v) {
                   setState(() {
-                    difficulty = v as String?;
+                    difficulty = v;
                   });
                 },
               ),

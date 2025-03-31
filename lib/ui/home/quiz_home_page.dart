@@ -34,16 +34,22 @@ class _QuizHomePageState extends State<QuizHomePage> {
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/icons/Explore_Active.png',
-              color: Color(0xffBE52F2),
+              color: index == 0 ? Color(0xffBE52F2) : Colors.grey,
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/Map_Inactive.png'),
+            icon: Image.asset(
+              'assets/icons/Map_Inactive.png',
+              color: index == 1 ? Color(0xffBE52F2) : Colors.grey,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/Profile_Inactive.png'),
+            icon: Image.asset(
+              'assets/icons/Profile_Inactive.png',
+              color: index == 2 ? Color(0xffBE52F2) : Colors.grey,
+            ),
             label: '',
           ),
         ],
