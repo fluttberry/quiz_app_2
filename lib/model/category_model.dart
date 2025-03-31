@@ -7,15 +7,16 @@ class CategoryModel {
     required this.triviaCategories,
   });
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'triviaCategories': triviaCategories.toMap((x) => x.toMap()).toList(),
+      'triviaCategories': triviaCategories.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
-      triviaCategories: List <CategoryItemModel>.from((map['triviaCategories'] as List <int>).map<CategoryItemModel>),
+      triviaCategories: List <CategoryItemModel>.from(map['triviaCategories'] as Map<String,dynamic>),
     );
   }
 
@@ -23,9 +24,9 @@ class CategoryModel {
 
   factory CategoryModel.fromJson(String source) {
     return CategoryModel.fromMap(json.decode(source) as Map<String, dynamic>);
-  } 
-} 
-
+  }
+}
+  
 class CategoryItemModel {
   int id;
   String name;
@@ -33,7 +34,6 @@ class CategoryItemModel {
     required this.id,
     required this.name,
   });
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +52,4 @@ class CategoryItemModel {
   String toJson() => json.encode(toMap());
 
   factory CategoryItemModel.fromJson(String source) => CategoryItemModel.fromMap(json.decode(source) as Map<String, dynamic>);
-}
+  }

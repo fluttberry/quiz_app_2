@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app_2/model/category_model.dart';
+import 'package:quiz_app_2/repository/category.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -8,9 +11,24 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  String? dif;
+  int? category;
+  CategoryModel? categoryModel;
+  CategoryRepository repository = CategoryRepository();
   int count = 50;
   String v = 'Question amount';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData ();
+  }
+  getData() async {
+var c = await repository.get();
+setState(() {
+  categoryModel = c;
+});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,17 +149,17 @@ class _QuizScreenState extends State<QuizScreen> {
               child: DropdownButton(
                 isExpanded: true,
                 iconSize: 35,
-                value: dif,
+                value: category,
                 items: [
                   DropdownMenuItem(child: Text('  All')),
-                  DropdownMenuItem(value: 'easy', child: Text('Easy')),
-                  DropdownMenuItem(value: 'normal', child: Text('Normal')),
-                  DropdownMenuItem(value: 'hard', child: Text('Hard')),
+                  for (CategoryItemModel cat in categoryModel?.triviaCategories?? [])
+                  DropdownMenuItem(value: cat.id, child: Text(cat.name)),
+                  
                 ],
 
                 onChanged: (v) {
                   setState(() {
-                    dif = v;
+                    category = v;
                   });
                 },
               ),
