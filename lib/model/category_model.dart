@@ -16,8 +16,8 @@ class CategoryModel {
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
-      triviaCategories: List <CategoryItemModel>.from(map['triviaCategories'] as Map<String,dynamic>),
-    );
+      triviaCategories: List <CategoryItemModel>.from((map['trivia_categories']).map<CategoryModel> ((x) => CategoryItemModel(id: id, name: name)),
+    ));
   }
 
   String toJson() => json.encode(toMap());

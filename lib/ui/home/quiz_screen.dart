@@ -21,13 +21,14 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData ();
+    getData();
   }
+
   getData() async {
-var c = await repository.get();
-setState(() {
-  categoryModel = c;
-});
+    var c = await repository.get();
+    setState(() {
+      categoryModel = c;
+    });
   }
 
   @override
@@ -112,13 +113,11 @@ setState(() {
             decoration: BoxDecoration(color: Colors.white),
             child: DropdownButtonHideUnderline(
               child: DropdownButton(
-                value: null,
-
                 isExpanded: true,
-
                 iconSize: 35,
+                value: null,
                 items: [
-                  DropdownMenuItem(value: null, child: Text('  All')),
+                  DropdownMenuItem(value: null, child: Text('All')),
                   DropdownMenuItem(value: 'easy', child: Text('Easy')),
                   DropdownMenuItem(value: 'normal', child: Text('Normal')),
                   DropdownMenuItem(value: 'hard', child: Text('Hard')),
@@ -151,15 +150,15 @@ setState(() {
                 iconSize: 35,
                 value: category,
                 items: [
-                  DropdownMenuItem(child: Text('  All')),
-                  for (CategoryItemModel cat in categoryModel?.triviaCategories?? [])
-                  DropdownMenuItem(value: cat.id, child: Text(cat.name)),
-                  
+                  DropdownMenuItem(value: null, child: Text('All')),
+                  for (CategoryItemModel cat
+                      in categoryModel?.triviaCategories ?? [])
+                    DropdownMenuItem(value: cat.id, child: Text(cat.name)),
                 ],
 
-                onChanged: (v) {
+                onChanged: (value) {
                   setState(() {
-                    category = v;
+                    category = value;
                   });
                 },
               ),
