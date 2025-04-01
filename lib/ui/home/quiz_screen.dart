@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:quiz_app_2/model/category_model.dart';
 import 'package:quiz_app_2/repository/category.dart';
+import 'package:quiz_app_2/ui/quiz_page.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -16,11 +16,9 @@ class _QuizScreenState extends State<QuizScreen> {
   CategoryModel? categoryModel;
   CategoryRepository repository = CategoryRepository();
   int count = 50;
- 
 
   @override
   void initState() {
-  
     super.initState();
     getData();
   }
@@ -61,7 +59,6 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         SizedBox(height: 20),
         Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 70, bottom: 15),
@@ -74,13 +71,6 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.only(bottom: 15),
-            //   child: Text(
-            //     '${count.}',
-            //     style: TextStyle(fontSize: 16, fontFamily: 'SFProText'),
-            //   ),
-            // ),
           ],
         ),
         Slider(
@@ -128,8 +118,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   setState(() {
                     category = v;
                   });
-                }
-                ,
+                },
               ),
             ),
           ),
@@ -158,14 +147,13 @@ class _QuizScreenState extends State<QuizScreen> {
                 items: [
                   DropdownMenuItem(value: null, child: Text('All')),
                   DropdownMenuItem(value: 'easy', child: Text('Easy')),
-                  DropdownMenuItem(value: 'normal', child: Text('Normal')),
+                  DropdownMenuItem(value: 'medium', child: Text('Medium')),
                   DropdownMenuItem(value: 'hard', child: Text('Hard')),
-                  
                 ],
 
-                onChanged: (v) {
+                onChanged: (value) {
                   setState(() {
-                    difficulty = v;
+                    difficulty = value;
                   });
                 },
               ),
@@ -181,7 +169,19 @@ class _QuizScreenState extends State<QuizScreen> {
             color: Color(0xff6979f8),
           ),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => QuizPage(
+                        count: count,
+                        difficulty: difficulty,
+                        category: category,
+                      ),
+                ),
+              );
+            },
             child: Center(
               child: Text(
                 'START',
