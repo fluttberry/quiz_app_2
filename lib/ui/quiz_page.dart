@@ -20,6 +20,12 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(children: [],) );
+      body: PageView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return Container(width: 100, height: 100, color: Colors.amber);
+        },
+      ),
+    );
   }
 }
