@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_2/model/quiz_response_model.dart';
 import 'package:quiz_app_2/repository/quiz.dart';
+import 'package:quiz_app_2/ui/widget/quiz_widget_page.dart';
 
 class QuizPage extends StatefulWidget {
   final int count;
@@ -26,22 +27,29 @@ class _QuizPageState extends State<QuizPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData ();
+    getData();
   }
 
-  getData ()async{
-var quiz = await _repository.get(widget.count, widget.difficulty, widget.category);
-setState(() {
-  quizResponseModel = quiz;
-});
+  getData() async {
+    var quiz = await _repository.get(
+      widget.count,
+      widget.difficulty,
+      widget.category,
+    );
+    setState(() {
+      quizResponseModel = quiz;
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
-        itemCount: quizResponseModel?.results.length??0,
+        itemCount: quizResponseModel?.results.length ?? 0,
         itemBuilder: (context, index) {
-          return Container(width: 100, height: 100, color: Colors.amber);
+          return QuizWidgetPage(
+            quizResultsModel: quizResponseModel!.results[index],
+          );
         },
       ),
     );
