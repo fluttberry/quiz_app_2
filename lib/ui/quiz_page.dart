@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:quiz_app_2/model/quiz_response_model.dart';
+import 'package:quiz_app_2/repository/quiz.dart';
 
 class QuizPage extends StatefulWidget {
   final int count;
@@ -17,11 +19,27 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  QuizResponseModel? quizResponseModel;
+  QuizRepository _repository = QuizRepository();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData ();
+  }
+
+  getData ()async{
+var quiz = await _repository.get(widget.count, widget.difficulty, widget.category);
+setState(() {
+  quizResponseModel = quiz;
+});
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
-        itemCount: 3,
+        itemCount: quizResponseModel?.results.length??0,
         itemBuilder: (context, index) {
           return Container(width: 100, height: 100, color: Colors.amber);
         },

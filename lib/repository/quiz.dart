@@ -8,7 +8,15 @@ class QuizRepository {
     String? difficulty,
     int? category,
   ) async {
-    var response = await http.get(Uri.parse('${Const.BaseUrl}/api.php'));
+    Map <String, dynamic> param = {};
+    param ['amount'] = count;
+    if (difficulty != null) {
+      param ['difficulty'] = difficulty;
+    }
+    if (category != null) {
+      param ['category'] = category;
+    }
+    var response = await http.get(Uri.parse('${Const.BaseUrl}/api.php').replace(queryParameters: param));
     if (response.statusCode == 200) {
       return QuizResponseModel.fromJson(response.body);
     } else {
