@@ -8,11 +8,13 @@ class QuizPage extends StatefulWidget {
   final int count;
   final String? difficulty;
   final int? category;
+  final String? categoryString;
   const QuizPage({
     super.key,
     required this.count,
     required this.difficulty,
     required this.category,
+    required this.categoryString,
   });
 
   @override
@@ -22,10 +24,11 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   QuizResponseModel? quizResponseModel;
   QuizRepository _repository = QuizRepository();
-
+  PageController controller = PageController();
+  int index = 0;
   @override
   void initState() {
-    // TODO: implement initState
+  
     super.initState();
     getData();
   }
@@ -43,14 +46,30 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView.builder(
-        itemCount: quizResponseModel?.results.length ?? 0,
-        itemBuilder: (context, index) {
-          return QuizWidgetPage(
-            quizResultsModel: quizResponseModel!.results[index],
-          );
-        },
+    // controller.nextPage(duration: Duration(milliseconds: 100), curve: Curves.bounceIn);
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [ 
+            Text(widget.categoryString==null?'All': widget.categoryString!),
+            Expanded(
+              child: PageView.builder(
+                controller: controller,
+                onPageChanged: (value) {
+                  setState(() {
+                    index = value;
+                  });
+                },
+                itemCount: quizResponseModel?.results.length ?? 0,
+                itemBuilder: (context, index) {
+                  return QuizWidgetPage(
+                    quizResultsModel: quizResponseModel!.results[index],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

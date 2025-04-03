@@ -8,13 +8,13 @@ class QuizRepository {
     String? difficulty,
     int? category,
   ) async {
-    Map <String, dynamic> param = {};
-    param ['amount'] = count;
+    Map <String, String> param = {};
+    param ['amount'] = '$count';
     if (difficulty != null) {
       param ['difficulty'] = difficulty;
     }
     if (category != null) {
-      param ['category'] = category;
+      param ['category'] = '$category';
     }
     var response = await http.get(Uri.parse('${Const.BaseUrl}/api.php').replace(queryParameters: param));
     if (response.statusCode == 200) {

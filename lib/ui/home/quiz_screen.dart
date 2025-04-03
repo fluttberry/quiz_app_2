@@ -178,6 +178,12 @@ class _QuizScreenState extends State<QuizScreen> {
                         count: count,
                         difficulty: difficulty,
                         category: category,
+                        categoryString:
+                            category == null
+                                ? null
+                                : categoryModel!.triviaCategories
+                                    .firstWhere((cat) => cat.id == category)
+                                    .name,
                       ),
                 ),
               );

@@ -60,12 +60,12 @@ class QuizResultsModel {
 
   factory QuizResultsModel.fromMap(Map<String, dynamic> map) {
     return QuizResultsModel(
-      type: map['type'] as String,
-      difficulty: map['difficulty'] as String,
-      category: map['category'] as String,
-      question: map['question'] as String,
-      correctAnswer: map['correct_answer'] as String,
-      incorrectAnswers: List<String>.from(map['incorrect_answers'] as List<String>,
+      type: map['type'],
+      difficulty: map['difficulty'],
+      category: map['category'],
+      question: map['question'],
+      correctAnswer: map['correct_answer'],
+      incorrectAnswers: List<String>.from(map['incorrect_answers'],
       ),
       mixedAnswers: [],
     );
