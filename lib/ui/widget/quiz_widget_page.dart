@@ -15,10 +15,44 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(widget.quizResultsModel.question),
-        for (String ans in widget.quizResultsModel.mixedAnswers)
-        ElevatedButton(onPressed: (){}, child: Text( ans),),
-       
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(30),
+            child: Text(
+              widget.quizResultsModel.question,
+              style: TextStyle(
+                fontFamily: 'SFProText',
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+        for (String answer in widget.quizResultsModel.mixedAnswers)
+          InkWell(
+            onTap: () {},
+            child: Container(
+              width: 280,
+              height: 40,
+              margin: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Center(
+                child: Text(
+                  answer,
+                  style: TextStyle(
+                    fontFamily: 'SFProText',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+            ),
+          ),
       ],
     );
   }

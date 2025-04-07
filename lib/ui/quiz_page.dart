@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:quiz_app_2/model/quiz_response_model.dart';
-import 'package:quiz_app_2/repository/quiz.dart';
+import 'package:quiz_app_2/repository/quiz_repository.dart';
 import 'package:quiz_app_2/ui/widget/quiz_widget_page.dart';
 
 class QuizPage extends StatefulWidget {
