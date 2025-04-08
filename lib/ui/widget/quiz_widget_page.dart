@@ -17,13 +17,15 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
       children: [
         Center(
           child: Padding(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(35),
             child: Text(
+              textAlign: TextAlign.center,
               widget.quizResultsModel.question,
               style: TextStyle(
                 fontFamily: 'SFProText',
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
+                
                 color: Colors.black,
               ),
             ),
@@ -37,7 +39,7 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
               height: 40,
               margin: EdgeInsets.all(5),
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue),
+                border: Border.all(color: Color(0xff2525ff)),
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Center(
@@ -47,7 +49,7 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
                     fontFamily: 'SFProText',
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: Colors.blue,
+                    color: Color(0xff3c4dff),
                   ),
                 ),
               ),

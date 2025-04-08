@@ -51,7 +51,11 @@ class _QuizPageState extends State<QuizPage> {
       child: Scaffold(
         body: Column(
           children: [ 
-            Text(widget.categoryString==null?'All': widget.categoryString!),
+            Row(
+              children: [
+                Text(widget.categoryString ??'All'),
+              ],
+            ),
             Expanded(
               child: PageView.builder(
                 controller: controller,
