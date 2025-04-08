@@ -11,10 +11,12 @@ class QuizWidgetPage extends StatefulWidget {
 }
 
 class _QuizWidgetPageState extends State<QuizWidgetPage> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 30,), 
         Center(
           child: Padding(
             padding: const EdgeInsets.all(35),
@@ -31,6 +33,7 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
             ),
           ),
         ),
+        SizedBox(height: 42,),
         for (String answer in widget.quizResultsModel.mixedAnswers)
           InkWell(
             onTap: () {},

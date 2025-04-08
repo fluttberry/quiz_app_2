@@ -23,12 +23,11 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   QuizResponseModel? quizResponseModel;
-  QuizRepository _repository = QuizRepository();
+  final QuizRepository _repository = QuizRepository();
   PageController controller = PageController();
-  int index = 0;
+  int index = 1;
   @override
   void initState() {
-  
     super.initState();
     getData();
   }
@@ -50,18 +49,40 @@ class _QuizPageState extends State<QuizPage> {
     return SafeArea(
       child: Scaffold(
         body: Column(
-          children: [ 
+          children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(widget.categoryString ??'All'),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios),
+                ),
+                Text(
+                  widget.categoryString == null
+                      ? 'All'
+                      : widget.categoryString!,
+                  style: TextStyle(
+                    fontFamily: 'SFProText',
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(width: 24,)
               ],
             ),
+            SizedBox(width: 170, child: LinearProgressIndicator(value:index/widget.count,)),
+            Text('$index/${widget.count}'),
+            
             Expanded(
               child: PageView.builder(
                 controller: controller,
                 onPageChanged: (value) {
                   setState(() {
-                    index = value;
+                    index = value+1;
                   });
                 },
                 itemCount: quizResponseModel?.results.length ?? 0,
