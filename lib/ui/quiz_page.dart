@@ -71,24 +71,30 @@ class _QuizPageState extends State<QuizPage> {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(width: 24,)
+                SizedBox(width: 24),
               ],
             ),
-            SizedBox(width: 170, child: LinearProgressIndicator(value:index/widget.count,)),
+            SizedBox(
+              width: 170,
+              child: LinearProgressIndicator(value: index / widget.count),
+            ),
             Text('$index/${widget.count}'),
-            
+
             Expanded(
               child: PageView.builder(
                 controller: controller,
                 onPageChanged: (value) {
                   setState(() {
-                    index = value+1;
+                    index = value + 1;
                   });
                 },
                 itemCount: quizResponseModel?.results.length ?? 0,
                 itemBuilder: (context, index) {
                   return QuizWidgetPage(
                     quizResultsModel: quizResponseModel!.results[index],
+                    next: () {
+                      controller.nextPage(duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+                    },
                   );
                 },
               ),

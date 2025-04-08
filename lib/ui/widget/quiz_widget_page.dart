@@ -5,7 +5,12 @@ import 'package:quiz_app_2/model/quiz_response_model.dart';
 
 class QuizWidgetPage extends StatefulWidget {
   final QuizResultsModel quizResultsModel;
-  const QuizWidgetPage({super.key, required this.quizResultsModel});
+  final Function() next;
+  const QuizWidgetPage({
+    super.key,
+    required this.quizResultsModel,
+    required this.next,
+  });
   @override
   State<QuizWidgetPage> createState() => _QuizWidgetPageState();
 }
@@ -36,7 +41,7 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
         SizedBox(height: 42),
 
         InkWell(
-          onTap: () {
+          onTap: () async {
             setState(() {
               clicked[0] =
                   widget.quizResultsModel.mixedAnswers[0] ==
@@ -44,6 +49,8 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
                       ? Colors.green
                       : Colors.red;
             });
+            await Future.delayed(Duration(seconds: 2));
+            widget.next();
           },
           child: Container(
             width: 280,
