@@ -82,6 +82,7 @@ class _QuizPageState extends State<QuizPage> {
 
             Expanded(
               child: PageView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 controller: controller,
                 onPageChanged: (value) {
                   setState(() {
