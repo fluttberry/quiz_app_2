@@ -5,13 +5,13 @@ class HistoryModel {
 String difficulty;
   String category;
   int correctAnswer;
-  int incorrectAnswer;
+  int totalAnswer;
   String date; 
   HistoryModel({
     required this.difficulty,
     required this.category,
     required this.correctAnswer,
-    required this.incorrectAnswer,
+    required this.totalAnswer,
     required this.date,
   });
 
@@ -21,7 +21,7 @@ String difficulty;
       'difficulty': difficulty,
       'category': category,
       'correctAnswer': correctAnswer,
-      'incorrectAnswer': incorrectAnswer,
+      'incorrectAnswer': totalAnswer,
       'date': date,
     };
   }
@@ -31,7 +31,7 @@ String difficulty;
       difficulty: map['difficulty'] as String,
       category: map['category'] as String,
       correctAnswer: map['correctAnswer'] as int,
-      incorrectAnswer: map['incorrectAnswer'] as int,
+      totalAnswer: map['totalAnswer'] as int,
       date: map['date'] as String,
     );
   }

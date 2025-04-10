@@ -5,7 +5,7 @@ import 'package:quiz_app_2/model/quiz_response_model.dart';
 
 class QuizWidgetPage extends StatefulWidget {
   final QuizResultsModel quizResultsModel;
-  final Function() next;
+  final Function(bool correct) next;
   const QuizWidgetPage({
     super.key,
     required this.quizResultsModel,
@@ -39,141 +39,47 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
           ),
         ),
         SizedBox(height: 42),
-
-        InkWell(
-          onTap: () async {
-            setState(() {
-              clicked[0] =
-                  widget.quizResultsModel.mixedAnswers[0] ==
-                          widget.quizResultsModel.correctAnswer
-                      ? Colors.green
-                      : Colors.red;
-            });
-            await Future.delayed(Duration(seconds: 2));
-            widget.next();
-          },
-          child: Container(
-            width: 280,
-            height: 40,
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: clicked[0] ?? Colors.white,
-              border: Border.all(color: Color(0xff2525ff)),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
-              child: Text(
-                widget.quizResultsModel.mixedAnswers[0],
-                style: TextStyle(
-                  fontFamily: 'SFProText',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff3c4dff),
-                ),
-              ),
-            ),
-          ),
-        ),
-
-        InkWell(
-          onTap: () {
-            setState(() {
-              clicked[1] =
-                  widget.quizResultsModel.mixedAnswers[1] ==
-                          widget.quizResultsModel.correctAnswer
-                      ? Colors.green
-                      : Colors.red;
-            });
-          },
-          child: Container(
-            width: 280,
-            height: 40,
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: clicked[1] ?? Colors.white,
-              border: Border.all(color: Color(0xff2525ff)),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
-              child: Text(
-                widget.quizResultsModel.mixedAnswers[1],
-                style: TextStyle(
-                  fontFamily: 'SFProText',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff3c4dff),
-                ),
-              ),
-            ),
-          ),
-        ),
-        if (widget.quizResultsModel.type == 'multiple')
-          InkWell(
-            onTap: () {
-              setState(() {
-                clicked[2] =
-                    widget.quizResultsModel.mixedAnswers[2] ==
-                            widget.quizResultsModel.correctAnswer
-                        ? Colors.green
-                        : Colors.red;
-              });
-            },
-            child: Container(
-              width: 280,
-              height: 40,
-              margin: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: clicked[2] ?? Colors.white,
-                border: Border.all(color: Color(0xff2525ff)),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Center(
-                child: Text(
-                  widget.quizResultsModel.mixedAnswers[2],
-                  style: TextStyle(
-                    fontFamily: 'SFProText',
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff3c4dff),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        if (widget.quizResultsModel.type == 'multiple')
-          InkWell(
-            onTap: () {
-              setState(() {
-                clicked[3] =
-                    widget.quizResultsModel.mixedAnswers[3] ==
-                            widget.quizResultsModel.correctAnswer
-                        ? Colors.green
-                        : Colors.red;
-              });
-            },
-            child: Container(
-              width: 280,
-              height: 40,
-              margin: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: clicked[3] ?? Colors.white,
-                border: Border.all(color: Color(0xff2525ff)),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Center(
-                child: Text(
-                  widget.quizResultsModel.mixedAnswers[3],
-                  style: TextStyle(
-                    fontFamily: 'SFProText',
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff3c4dff),
-                  ),
-                ),
-              ),
-            ),
-          ),
+        button(0),
+        button(1),
+        if (widget.quizResultsModel.type == 'Multiple') button(2),
+        if (widget.quizResultsModel.type == 'Multiple') button(2),
       ],
+    );
+  }
+
+  Widget button(i) {
+    return InkWell(
+      onTap: () async {
+        bool correct =
+            widget.quizResultsModel.mixedAnswers[i] ==
+            widget.quizResultsModel.correctAnswer;
+        setState(() {
+          clicked[0] = correct ? Colors.green : Colors.red;
+        });
+        await Future.delayed(Duration(seconds: 1));
+        correct;
+      },
+      child: Container(
+        width: 280,
+        height: 40,
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: clicked[0] ?? Colors.white,
+          border: Border.all(color: Color(0xff2525ff)),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Center(
+          child: Text(
+            widget.quizResultsModel.mixedAnswers[0],
+            style: TextStyle(
+              fontFamily: 'SFProText',
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: Color(0xff3c4dff),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

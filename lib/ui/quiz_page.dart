@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:quiz_app_2/model/history_model.dart';
 import 'package:quiz_app_2/model/quiz_response_model.dart';
 import 'package:quiz_app_2/repository/quiz_repository.dart';
 import 'package:quiz_app_2/ui/widget/quiz_widget_page.dart';
@@ -26,6 +27,7 @@ class _QuizPageState extends State<QuizPage> {
   final QuizRepository _repository = QuizRepository();
   PageController controller = PageController();
   int index = 1;
+  int correctAnswer = 0;
   @override
   void initState() {
     super.initState();
@@ -93,8 +95,16 @@ class _QuizPageState extends State<QuizPage> {
                 itemBuilder: (context, index) {
                   return QuizWidgetPage(
                     quizResultsModel: quizResponseModel!.results[index],
-                    next: () {
-                      controller.nextPage(duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+                    next: (correct) {
+                      if ((controller.page! + 1) == widget.count) {
+                        HistoryModel historyModel = HistoryModel(difficulty: widget.difficulty??'All', category: widget.categoryString??'Mixed', correctAnswer: correctAnswer, totalAnswer: totalAnswer, date: date)
+                        return; 
+                      }
+                      ;
+                      controller.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOutExpo,
+                      );
                     },
                   );
                 },
