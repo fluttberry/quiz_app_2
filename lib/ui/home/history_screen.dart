@@ -20,17 +20,32 @@ class _HistoryState extends State<HistoryScreen> {
   }
 
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: historyListModel?.histories.length ?? 0,
-      itemBuilder: (context, index) {
-        return Text(
-          '${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
-        );
-      },
+    return RefreshIndicator(
+      onRefresh: getData,
+      child: ListView.builder(
+        itemCount: historyListModel?.histories.length ?? 0,
+        itemBuilder: (context, index) {
+          return Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
+                ),
+                Text('${historyListModel!.histories[index].date}'),
+                Text(
+                  '${historyListModel!.histories[index].difficulty}${historyListModel!.histories[index].date}',
+                ),
+                Text('${historyListModel!.histories[index].category}'),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
-  getData() async {
+  Future<void> getData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var value = sharedPreferences.getString('History');
     if (value != null) {

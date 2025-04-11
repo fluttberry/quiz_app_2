@@ -100,37 +100,40 @@ class _QuizPageState extends State<QuizPage> {
                       if (correct) {
                         correctAnswer++;
                       }
-                      if ((controller.page! + 1) == widget.count) {
-                        HistoryModel historyModel = HistoryModel(
-                          difficulty: widget.difficulty ?? 'All',
-                          category: widget.categoryString ?? 'Mixed',
-                          correctAnswer: correctAnswer,
-                          totalAnswer: widget.count,
-                          date: '${DateTime.now()}',
-                        );
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder:
-                                (context) =>
-                                    ResultPage(historyModel: historyModel),
-                          ),
-                        );
-                        return;
-                      }
-                      
-                      controller.nextPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOutExpo,
-                      );
+                      next();
                     },
                   );
                 },
               ),
             ),
+            InkWell(onTap: next, child: Text('Skip')),
           ],
         ),
       ),
+    );
+  }
+
+  next() {
+    if ((controller.page! + 1) == widget.count) {
+      HistoryModel historyModel = HistoryModel(
+        difficulty: widget.difficulty ?? 'All',
+        category: widget.categoryString ?? 'Mixed',
+        correctAnswer: correctAnswer,
+        totalAnswer: widget.count,
+        date: '${DateTime.now()}',
+      );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ResultPage(historyModel: historyModel),
+        ),
+      );
+      return;
+    }
+
+    controller.nextPage(
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOutExpo,
     );
   }
 }
