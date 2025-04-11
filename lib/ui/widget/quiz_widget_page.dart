@@ -42,7 +42,7 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
         button(0),
         button(1),
         if (widget.quizResultsModel.type == 'Multiple') button(2),
-        if (widget.quizResultsModel.type == 'Multiple') button(2),
+        if (widget.quizResultsModel.type == 'Multiple') button(3),
       ],
     );
   }
@@ -54,7 +54,7 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
             widget.quizResultsModel.mixedAnswers[i] ==
             widget.quizResultsModel.correctAnswer;
         setState(() {
-          clicked[0] = correct ? Colors.green : Colors.red;
+          clicked[i] = correct ? Colors.green : Colors.red;
         });
         await Future.delayed(Duration(seconds: 1));
         correct;
@@ -64,13 +64,13 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
         height: 40,
         margin: EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: clicked[0] ?? Colors.white,
+          color: clicked[i] ?? Colors.white,
           border: Border.all(color: Color(0xff2525ff)),
           borderRadius: BorderRadius.circular(6),
         ),
         child: Center(
           child: Text(
-            widget.quizResultsModel.mixedAnswers[0],
+            widget.quizResultsModel.mixedAnswers[i],
             style: TextStyle(
               fontFamily: 'SFProText',
               fontSize: 14,

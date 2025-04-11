@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app_2/model/history_model.dart';
 import 'package:quiz_app_2/model/quiz_response_model.dart';
 import 'package:quiz_app_2/repository/quiz_repository.dart';
+import 'package:quiz_app_2/ui/result_page.dart';
 import 'package:quiz_app_2/ui/widget/quiz_widget_page.dart';
 
 class QuizPage extends StatefulWidget {
@@ -96,9 +97,26 @@ class _QuizPageState extends State<QuizPage> {
                   return QuizWidgetPage(
                     quizResultsModel: quizResponseModel!.results[index],
                     next: (correct) {
+                      if (correct) {
+                        correctAnswer++;
+                      }
                       if ((controller.page! + 1) == widget.count) {
-                        HistoryModel historyModel = HistoryModel(difficulty: widget.difficulty??'All', category: widget.categoryString??'Mixed', correctAnswer: correctAnswer, totalAnswer: totalAnswer, date: date)
-                        return; 
+                        HistoryModel historyModel = HistoryModel(
+                          difficulty: widget.difficulty ?? 'All',
+                          category: widget.categoryString ?? 'Mixed',
+                          correctAnswer: correctAnswer,
+                          totalAnswer: widget.count,
+                          date: '${DateTime.now()}',
+                        );
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    ResultPage(historyModel: historyModel),
+                          ),
+                        );
+                        return;
                       }
                       ;
                       controller.nextPage(
