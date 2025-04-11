@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class HistoryListModel {
-  List<HistoryListModel> histories;
+  List<HistoryModel> histories;
   HistoryListModel({required this.histories});
 
   Map<String, dynamic> toMap() {
@@ -13,9 +13,9 @@ class HistoryListModel {
 
   factory HistoryListModel.fromMap(Map<String, dynamic> map) {
     return HistoryListModel(
-      histories: List<HistoryListModel>.from(
-        (map['histories'] as List<int>).map<HistoryListModel>(
-          (x) => HistoryListModel.fromMap(x as Map<String, dynamic>),
+      histories: List<HistoryModel>.from(
+        (map['histories']).map<HistoryModel>(
+          (x) => HistoryModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );

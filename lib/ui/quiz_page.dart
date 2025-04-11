@@ -118,7 +118,7 @@ class _QuizPageState extends State<QuizPage> {
                         );
                         return;
                       }
-                      ;
+                      
                       controller.nextPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeInOutExpo,
