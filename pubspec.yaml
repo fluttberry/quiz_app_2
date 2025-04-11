@@ -66,6 +66,7 @@ flutter:
     - assets/icons/Explore_Active.png
     - assets/icons/Map_Inactive.png
     - assets/icons/Profile_Inactive.png
+    - assets/icons/Done.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

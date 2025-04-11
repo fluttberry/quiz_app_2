@@ -19,33 +19,42 @@ class _HistoryState extends State<HistoryScreen> {
     getData();
   }
 
+@override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: getData,
-      child: ListView.builder(
-        itemCount: historyListModel?.histories.length ?? 0,
-        itemBuilder: (context, index) {
-          return Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
-                ),
-                Text('${historyListModel!.histories[index].date}'),
-                Text(
-                  '${historyListModel!.histories[index].difficulty}${historyListModel!.histories[index].date}',
-                ),
-                Text('${historyListModel!.histories[index].category}'),
-              ],
+    return Column(
+      children: [
+        Text('History'),
+        Expanded(
+          child: RefreshIndicator(
+            onRefresh: getData,
+            child: ListView.builder(
+              itemCount: historyListModel?.histories.length ?? 0,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
+                      ),
+                      Text('${historyListModel!.histories[index].date}'),
+                      Text(
+                        '${historyListModel!.histories[index].difficulty}${historyListModel!.histories[index].date}',
+                      ),
+                      Text('${historyListModel!.histories[index].category}'),
+                    ],
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
+          ),
+        ),
+      ],
     );
   }
 
   Future<void> getData() async {
+    print('-----');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var value = sharedPreferences.getString('History');
     if (value != null) {

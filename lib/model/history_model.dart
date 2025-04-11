@@ -46,7 +46,7 @@ class HistoryModel {
       'difficulty': difficulty,
       'category': category,
       'correctAnswer': correctAnswer,
-      'incorrectAnswer': totalAnswer,
+      'totalAnswer': totalAnswer,
       'date': date,
     };
   }

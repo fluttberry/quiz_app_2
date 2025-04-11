@@ -56,8 +56,8 @@ class _QuizWidgetPageState extends State<QuizWidgetPage> {
         setState(() {
           clicked[i] = correct ? Colors.green : Colors.red;
         });
-        await Future.delayed(Duration(seconds: 2));
-        correct;
+        await Future.delayed(Duration(seconds: 1));
+       widget.next (correct);
       },
       child: Container(
         width: 280,
