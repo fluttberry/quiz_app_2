@@ -15,45 +15,110 @@ class ResultPage extends StatelessWidget {
         body: Expanded(
           child: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(
-                    'Result',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontFamily: 'SFProText',
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  'Result',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontFamily: 'SFProText',
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 124,
-                      width: 124,
-                      child: Image.asset('assets/icons/Done.png'),
-                    ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 124,
+                    width: 124,
+                    child: Image.asset('assets/icons/Done.png'),
                   ),
                 ),
                 Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade100,
+                        spreadRadius: 20,
+                        blurRadius: 50,
+                      ),
+                    ],
+                  ),
+                  height: 174,
+                  width: 342,
                   child: Column(
-                    children: [Text('Categoty: ${historyModel.category}'),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                      Text('Difficulty: ${historyModel.difficulty}'), SizedBox(width: 20,),
-                Text(
-                  'Correct answers: ${historyModel.correctAnswer}/${historyModel.totalAnswer}',
-                ),
-                    ],),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          'Categoty: ${historyModel.category}',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'Difficulty:',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'SFProText',
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+
+                          Text(
+                            'Correct answers:',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'SFProText',
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text('${historyModel.difficulty}'),
+
+                          Text(
+                            ' ${historyModel.correctAnswer}/${historyModel.totalAnswer}',
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
 
-                
+                Container(
+                  height: 40,
+                  width: 90,
+
+                  decoration: BoxDecoration(
+                    color: Color(0xff4ce2a7),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Center(
+                      child: Text(
+                        'Finish',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'SFProText',
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

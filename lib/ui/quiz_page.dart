@@ -106,7 +106,30 @@ class _QuizPageState extends State<QuizPage> {
                 },
               ),
             ),
-            InkWell(onTap: next, child: Text('Skip')),
+            Container(
+                  height: 40,
+                  width: 90,
+
+                  decoration: BoxDecoration(
+                    color: Color(0xffff6581),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: InkWell(
+                    onTap: next,
+                    child: Center(
+                      child: Text(
+                        'Skip',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'SFProText',
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 50),
           ],
         ),
       ),
