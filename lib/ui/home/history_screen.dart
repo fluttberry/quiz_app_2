@@ -56,18 +56,51 @@ class _HistoryState extends State<HistoryScreen> {
                   ),
                   height: 90,
                   width: 300,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
-                      ),
-                      Text('${historyListModel!.histories[index].date}'),
-                      Text(
-                        '${historyListModel!.histories[index].difficulty}${historyListModel!.histories[index].date}',
-                      ),
-                      Text('${historyListModel!.histories[index].category}'),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          '${historyListModel!.histories[index].category}',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          'Correct answers: ${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          'Difficulty: ${historyListModel!.histories[index].difficulty}${historyListModel!.histories[index]}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          
+                          '${historyListModel!.histories[index].date}',
+                          style: TextStyle(
+                            fontSize: 9,
+                            fontFamily: 'SFProText',
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
