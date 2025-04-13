@@ -51,8 +51,10 @@ class ResultPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(20),
                         child: Text(
+                          textAlign: TextAlign.center,
                           'Categoty: ${historyModel.category}',
                           style: TextStyle(
+                            
                             fontSize: 17,
                             fontFamily: 'SFProText',
                             fontWeight: FontWeight.w700,

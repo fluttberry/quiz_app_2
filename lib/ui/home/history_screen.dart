@@ -19,11 +19,23 @@ class _HistoryState extends State<HistoryScreen> {
     getData();
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('History'),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text(
+            'History',
+
+            style: TextStyle(
+              fontSize: 24,
+              fontFamily: 'SFProText',
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
         Expanded(
           child: RefreshIndicator(
             onRefresh: getData,
@@ -31,6 +43,19 @@ class _HistoryState extends State<HistoryScreen> {
               itemCount: historyListModel?.histories.length ?? 0,
               itemBuilder: (context, index) {
                 return Container(
+                  margin: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade100,
+                        spreadRadius: 20,
+                        blurRadius: 50,
+                      ),
+                    ],
+                  ),
+                  height: 90,
+                  width: 300,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
