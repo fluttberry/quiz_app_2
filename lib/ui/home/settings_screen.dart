@@ -20,16 +20,17 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 20,),
+        SizedBox(height: 20),
         Container(
-          decoration: BoxDecoration(border: Border.all(color: Color(0xffEEEEEE),),),
+          decoration: BoxDecoration(
+            border: Border.all(color: Color(0xffEEEEEE)),
+          ),
           height: 90,
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(25),
             child: Row(
-              
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Share this app',
@@ -37,23 +38,28 @@ class SettingsScreen extends StatelessWidget {
                     fontSize: 18,
                     fontFamily: 'SFProText',
                     fontWeight: FontWeight.w400,
-                    color: Colors.black
+                    color: Colors.black,
                   ),
                 ),
-                Icon(Icons.arrow_forward_ios, size: 15, color: Color(0xffbe52f2)),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                  color: Color(0xffbe52f2),
+                ),
               ],
             ),
           ),
         ),
         Container(
-          decoration: BoxDecoration(border: Border.all(color: Color(0xffEEEEEE),),),
+          decoration: BoxDecoration(
+            border: Border.all(color: Color(0xffEEEEEE)),
+          ),
           height: 90,
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(25),
             child: Row(
-              
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Rate us',
@@ -61,23 +67,28 @@ class SettingsScreen extends StatelessWidget {
                     fontSize: 18,
                     fontFamily: 'SFProText',
                     fontWeight: FontWeight.w400,
-                    color: Colors.black
+                    color: Colors.black,
                   ),
                 ),
-                Icon(Icons.arrow_forward_ios, size: 15, color: Color(0xffbe52f2)),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                  color: Color(0xffbe52f2),
+                ),
               ],
             ),
           ),
         ),
         Container(
-          decoration: BoxDecoration(border: Border.all(color: Color(0xffEEEEEE),),),
+          decoration: BoxDecoration(
+            border: Border.all(color: Color(0xffEEEEEE)),
+          ),
           height: 90,
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(25),
             child: Row(
-              
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Leave fedback',
@@ -85,35 +96,49 @@ class SettingsScreen extends StatelessWidget {
                     fontSize: 18,
                     fontFamily: 'SFProText',
                     fontWeight: FontWeight.w400,
-                    color: Colors.black
+                    color: Colors.black,
                   ),
                 ),
-                Icon(Icons.arrow_forward_ios, size: 15, color: Color(0xffbe52f2)),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                  color: Color(0xffbe52f2),
+                ),
               ],
             ),
           ),
         ),
-        Container(
-          decoration: BoxDecoration(border: Border.all(color: Color(0xffEEEEEE),),),
-          height: 90,
-          width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.all(25),
-            child: Row(
-              
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Clear history',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'SFProText',
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black
+        InkWell(
+          onTap: () {
+            
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Color(0xffEEEEEE)),
+            ),
+            height: 90,
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Clear history',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'SFProText',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                Icon(Icons.arrow_forward_ios, size: 15, color: Color(0xffbe52f2)),
-              ],
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 15,
+                    color: Color(0xffbe52f2),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

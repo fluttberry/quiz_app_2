@@ -107,7 +107,9 @@ class ResultPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
                     child: Center(
                       child: Text(
                         'Finish',
