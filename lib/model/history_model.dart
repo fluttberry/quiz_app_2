@@ -7,7 +7,7 @@ class HistoryListModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'histories': histories.map((x) => x.toMap()).toList(),
+      'histories': histories.map((x) => x.toMap()).toList(), 
     };
   }
 

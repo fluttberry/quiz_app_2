@@ -61,7 +61,7 @@ class _HistoryState extends State<HistoryScreen> {
                     child: Column(
                       
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
                           '${historyListModel!.histories[index].category}',
@@ -81,7 +81,7 @@ class _HistoryState extends State<HistoryScreen> {
                           ),
                         ),
                         Text(
-                          'Difficulty: ${historyListModel!.histories[index].difficulty}${historyListModel!.histories[index]}',
+                          'Difficulty: ${historyListModel!.histories[index].difficulty}',
                           style: TextStyle(
                             fontSize: 12,
                             fontFamily: 'SFProText',
@@ -89,14 +89,16 @@ class _HistoryState extends State<HistoryScreen> {
                             color: Colors.grey,
                           ),
                         ),
-                        Text(
-                          
-                          '${historyListModel!.histories[index].date}',
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontFamily: 'SFProText',
-                            fontWeight: FontWeight.w300,
-                            color: Colors.grey,
+                        Align(alignment: Alignment.bottomRight,
+                          child: Text(
+                            
+                            '${historyListModel!.histories[index].date}',
+                            style: TextStyle(
+                              fontSize: 9,
+                              fontFamily: 'SFProText',
+                              fontWeight: FontWeight.w300,
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ],
@@ -112,7 +114,7 @@ class _HistoryState extends State<HistoryScreen> {
   }
 
   Future<void> getData() async {
-    print('-----');
+    // print('-----');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var value = sharedPreferences.getString('History');
     if (value != null) {
