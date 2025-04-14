@@ -59,17 +59,26 @@ class _HistoryState extends State<HistoryScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
-                      
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          '${historyListModel!.histories[index].category}',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontFamily: 'SFProText',
-                            fontWeight: FontWeight.w700,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Category ${historyListModel!.histories[index].category}',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontFamily: 'SFProText',
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Icon(
+                              Icons.more_horiz,
+                              size: 20,
+                              color: Colors.grey.shade300,
+                            ),
+                          ],
                         ),
                         Text(
                           'Correct answers: ${historyListModel!.histories[index].correctAnswer}/${historyListModel!.histories[index].totalAnswer}',
@@ -89,9 +98,9 @@ class _HistoryState extends State<HistoryScreen> {
                             color: Colors.grey,
                           ),
                         ),
-                        Align(alignment: Alignment.bottomRight,
+                        Align(
+                          alignment: Alignment.bottomRight,
                           child: Text(
-                            
                             '${historyListModel!.histories[index].date}',
                             style: TextStyle(
                               fontSize: 9,
