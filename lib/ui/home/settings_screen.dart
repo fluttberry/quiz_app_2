@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -109,8 +110,10 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {
-            
+          onTap: ()async {
+            SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+            // sharedPreferences.clear();
+            sharedPreferences.remove('History');
           },
           child: Container(
             decoration: BoxDecoration(
