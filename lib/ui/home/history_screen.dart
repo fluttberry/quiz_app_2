@@ -132,6 +132,10 @@ class _HistoryState extends State<HistoryScreen> {
       setState(() {
         historyListModel = history;
       });
+    } else {
+      setState(() {
+        historyListModel = null;
+      });
     }
   }
 }

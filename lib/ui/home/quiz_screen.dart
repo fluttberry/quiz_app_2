@@ -15,7 +15,7 @@ class _QuizScreenState extends State<QuizScreen> {
   String? difficulty;
   CategoryModel? categoryModel;
   CategoryRepository repository = CategoryRepository();
-  int count = 5;
+  int count = 3;
 
   @override
   void initState() {

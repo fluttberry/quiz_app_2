@@ -133,7 +133,7 @@ class ResultPage extends StatelessWidget {
 
   save() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.remove('History');
+    // sharedPreferences.remove('History');
     var value = sharedPreferences.getString('History');
     if (value != null) {
       HistoryListModel historyListModel = HistoryListModel.fromJson(value);
