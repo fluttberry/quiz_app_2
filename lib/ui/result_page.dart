@@ -12,120 +12,116 @@ class ResultPage extends StatelessWidget {
     save();
     return SafeArea(
       child: Scaffold(
-        body: Expanded(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'Result',
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontFamily: 'SFProText',
-                    fontWeight: FontWeight.w600,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              'Result',
+              style: TextStyle(
+                fontSize: 17,
+                fontFamily: 'SFProText',
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Center(
+              child: Container(
+                alignment: Alignment.center,
+                height: 124,
+                width: 124,
+                child: Image.asset('assets/icons/Done.png'),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade100,
+                    spreadRadius: 20,
+                    blurRadius: 50,
                   ),
-                ),
-                Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 124,
-                    width: 124,
-                    child: Image.asset('assets/icons/Done.png'),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade100,
-                        spreadRadius: 20,
-                        blurRadius: 50,
-                      ),
-                    ],
-                  ),
-                  height: 174,
-                  width: 342,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Categoty: ${historyModel.category}',
-                          style: TextStyle(
-                            
-                            fontSize: 17,
-                            fontFamily: 'SFProText',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            'Difficulty:',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'SFProText',
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-
-                          Text(
-                            'Correct answers:',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'SFProText',
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('${historyModel.difficulty}'),
-
-                          Text(
-                            ' ${historyModel.correctAnswer}/${historyModel.totalAnswer}',
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-
-                Container(
-                  height: 40,
-                  width: 90,
-
-                  decoration: BoxDecoration(
-                    color: Color(0xff4ce2a7),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Center(
-                      child: Text(
-                        'Finish',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'SFProText',
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                ],
+              ),
+              height: 174,
+              width: 342,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      'Categoty: ${historyModel.category}',
+                      style: TextStyle(
+                        
+                        fontSize: 17,
+                        fontFamily: 'SFProText',
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Difficulty:',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'SFProText',
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                
+                      Text(
+                        'Correct answers:',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'SFProText',
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text('${historyModel.difficulty}'),
+                
+                      Text(
+                        ' ${historyModel.correctAnswer}/${historyModel.totalAnswer}',
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
+                
+            Container(
+              height: 40,
+              width: 90,
+                
+              decoration: BoxDecoration(
+                color: Color(0xff4ce2a7),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Center(
+                  child: Text(
+                    'Finish',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'SFProText',
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

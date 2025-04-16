@@ -38,7 +38,7 @@ class _QuizScreenState extends State<QuizScreen> {
         Padding(
           padding: const EdgeInsets.only(right: 300, bottom: 50, top: 0),
           child: Text(
-            'Quiz',
+            'Quiz2',
             style: TextStyle(
               fontSize: 30,
               fontFamily: 'SFProText',
